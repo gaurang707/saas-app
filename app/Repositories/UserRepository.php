@@ -8,7 +8,11 @@ class UserRepository implements UserRepositoryInterface
 {
     public function findById($id)
     {
-        return User::find($id);
+        //return User::find($id);
+
+        return cache()->remember("user_$id", 60, function($id) {
+            return User::find($id);
+        }); 
     }
 
     public function findByEmail($email)
