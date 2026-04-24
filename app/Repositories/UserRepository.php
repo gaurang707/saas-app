@@ -24,4 +24,5 @@ class UserRepository implements UserRepositoryInterface
     {
         return User::create($data);
     }
+
 }
